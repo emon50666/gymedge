@@ -2,10 +2,14 @@ import { FaRunning } from 'react-icons/fa';
 import about_image from '../../../assets/about.png'
 import { GiWeightLiftingUp } from "react-icons/gi";
 import { MdOutlineSportsGymnastics } from "react-icons/md";
+import { Helmet } from 'react-helmet';
 
 const About = () => {
     return (
         <div>
+            <Helmet>
+                <title>GYM EDGE || About </title>
+            </Helmet>
             <div className="md:flex gap-5 mb-10 mt-10">
             <div className='bg-orange-500 rounded-r-lg md:w-1/2'>
               <div>
