@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
+import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Register = () => {
-
+const navigate = useNavigate()
     const {createUser} = useAuth();
 
     const handelRegister = event =>{
@@ -17,11 +20,22 @@ const Register = () => {
         const password = form.password.value;
         const loginInfo = { name,email,photo, password };
         console.log(loginInfo);
-        
+
         createUser(email,password)
         .then(result =>{
+
+
+                // update profile
+          updateProfile(result.user,{
+            displayName: name,
+            photoURL: photo,
+
+        })
+
             console.log(result.user)
-            alert('account success')
+           toast.success('Account Create Success?')
+
+           navigate('/')
         })
        
 
@@ -30,6 +44,9 @@ const Register = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>GYM EDGE || Register </title>
+            </Helmet>
             <div className="bg-black/50 pt-10 pb-10">
             <div className="flex flex-col max-w-md p-6 m-auto   bg-white/55 justify-center shadow-2xl shadow-white/40 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800">
 	<div className="mb-8 text--400 text-center">
@@ -65,6 +82,7 @@ const Register = () => {
 		</div>
 	</form>
 </div>
+<Toaster />
             </div>
         </div>
     );
