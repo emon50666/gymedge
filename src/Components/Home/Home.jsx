@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
+import About from "../Pages/About/About";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
                 <title>GYM EDGE || Home </title>
             </Helmet>
            <Banner></Banner>
+           <About></About>
         </div>
     );
 };
