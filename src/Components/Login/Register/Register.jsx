@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../Hook/useAuth";
+
 
 
 const Register = () => {
 
+    const {createUser} = useAuth();
 
-    const handeRegister = event =>{
+    const handelRegister = event =>{
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -14,6 +17,13 @@ const Register = () => {
         const password = form.password.value;
         const loginInfo = { name,email,photo, password };
         console.log(loginInfo);
+        
+        createUser(email,password)
+        .then(result =>{
+            console.log(result.user)
+            alert('account success')
+        })
+       
 
 
     }
@@ -26,7 +36,7 @@ const Register = () => {
 		<h1 className="my-3 text-4xl font-bold">Create A Account</h1>
 		<p className="text-sm dark:text-gray-600">Sign in to access your account</p>
 	</div>
-	<form onSubmit={handeRegister} className="space-y-12">
+	<form onSubmit={handelRegister} className="space-y-12">
 		<div className="space-y-4">
 			<div>
 				<label htmlFor="name" className="block mb-2 font-semibold  text-md">Name </label>
@@ -47,7 +57,7 @@ const Register = () => {
 		</div>
 		<div className="space-y-2">
 			<div>
-				<button type="submit" className="w-full  btn btn-primary bg-orange-500 px-8 py-3 font-semibold rounded-md border-none dark:text-gray-50">Sign in</button>
+				<button type="submit" className="w-full  btn btn-primary bg-orange-500 px-8 py-3 rounded-md border-none text-white font-bold">Register Now</button>
 			</div>
 			<p className="px-6 text-sm text-center font-bold">You have an account ?
 				<span className="ml-2 text-violet-600 hover:underline"><Link to={'/login'}>LogIn</Link>.</span>
