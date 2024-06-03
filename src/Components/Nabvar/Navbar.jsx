@@ -49,13 +49,8 @@ const Navbar = () => {
           </div>
         </div>
         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-          <li>
-            <a className="justify-between">
-              {user.displayName}
-             
-            </a>
-          </li>
-          <li><a>Settings</a></li>
+          
+          <Link to={'/dashBoard'}> <li className="font-semibold  mt-2 mb-5">Dashboard</li> </Link>
           <Link to={'/login'}> <button onClick={()=> logOut()}  className="  w-full mr-4 pt-2 pb-2 pl-6 pr-6 bg-orange-400 rounded-full text-white font-bold hover:bg-white hover:text-orange-500 delay-200 hover:border hover:border-orange-400 ">LogOut</button></Link>
         </ul>
       </div> : <>

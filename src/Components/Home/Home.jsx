@@ -4,6 +4,7 @@ import About from "../Pages/About/About";
 import Feature from "../Pages/Feature/Feature";
 import Testomonial from "../Pages/Testomonial/Testomonial";
 import Team from "../Pages/Team/Team";
+import NewsLetter from "../Pages/NewsLetter/NewsLetter";
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
            <Feature></Feature>
            <About></About>
            <Testomonial></Testomonial>
+           <NewsLetter></NewsLetter>
            <Team></Team>
         </div>
     );

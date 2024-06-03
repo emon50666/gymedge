@@ -19,6 +19,7 @@ const Team = () => {
                         <div className='bg-orange-500/90 text-white rounded-md text-center md:w-80 justify-start p-2 bottom-20  relative m-auto'>
                             <h2 className='font-bold text-2xl'>Ellie Watson</h2>
                             <p className='font-semibold'>Fitness Trainer</p>
+                            <p className='text-sm'>He has helped numerous clients achieve their fitness goals through customized workout plans and motivational coaching.</p>
                             
                             </div>
                        </div>
@@ -27,8 +28,9 @@ const Team = () => {
                             <img src={team_2} alt="" className='w-[400px] rounded-md '/>
                         </div>
                         <div className='bg-orange-500/90 text-white rounded-md text-center md:w-80 justify-start p-2 bottom-20  relative m-auto'>
-                            <h2 className='font-bold text-2xl'>Ellie Watson</h2>
-                            <p className='font-semibold'>Fitness Trainer</p>
+                            <h2 className='font-bold text-2xl'>Mack Jon</h2>
+                            <p className='font-semibold'>Youga Trainer</p>
+                            <p className="text-sm"> With a degree in dietetics and extensive experience working with athletes and fitness enthusiasts, </p>
                             
                             </div>
                        </div>
@@ -37,8 +39,9 @@ const Team = () => {
                             <img src={team_3} alt="" className='w-[400px] rounded-md  '/>
                         </div>
                         <div className='bg-orange-500/90 text-white rounded-md text-center md:w-80 justify-start p-2 bottom-20  relative m-auto'>
-                            <h2 className='font-bold text-2xl'>Ellie Watson</h2>
-                            <p className='font-semibold'>Fitness Trainer</p>
+                            <h2 className='font-bold text-2xl'>Jenifer Alex</h2>
+                            <p className='font-semibold'>Weight  Trainer</p>
+                            <p className="text-sm">  yoga practices with modern fitness techniques. His classes at Gym Edge are designed to improve flexibility, strength, and mental clarity. </p>
                             
                             </div>
                        </div>

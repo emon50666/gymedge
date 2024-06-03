@@ -9,6 +9,8 @@ import Register from "../Components/Login/Register/Register";
 import AllTrainer from "../Components/Pages/AllTrainer/AllTrainer";
 import AllClass from "../Components/Pages/AllClasses/AllClass";
 import Forum from "../Components/Pages/Forum/Forum";
+
+import DashboardLayout from "../Layout/DashboardLayout";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -40,6 +42,15 @@ import Forum from "../Components/Pages/Forum/Forum";
         }
       ]
     },
+
+    // dashboard route
+    {
+      path: '/dashBoard',
+      element: <DashboardLayout></DashboardLayout>,
+      children:[
+
+      ]
+    }
   ]);
 
   export default router;
