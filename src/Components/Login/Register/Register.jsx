@@ -5,11 +5,11 @@ import { Helmet } from "react-helmet";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 import { ImSpinner9 } from "react-icons/im";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
+// import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const Register = () => {
     const navigate = useNavigate();
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
     const { createUser,updateUserProfile,loading,setLoading } = useAuth();
 
 
@@ -42,11 +42,15 @@ const Register = () => {
 
         // update profile
        await updateUserProfile(name,data.data.display_url)
-       const userInfo = {
-        displayName: name,
-        email: user.email,
-        }
-       await axiosPublic.post('/users', userInfo)
+    //    const userInfo = {
+    //     displayName: name,
+    //     email: user.email,
+    //     role: 'guest',
+    //     status: 'verified'
+    //     }
+    //    await axiosPublic.post('/users', userInfo)
+
+    
         
             toast.success('account create successfully')
             navigate('/')

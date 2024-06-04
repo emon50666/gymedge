@@ -4,6 +4,7 @@ import { createContext } from "react";
 import auth from "../Firebase/Firebase";
 
 import PropTypes from 'prop-types'
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
@@ -43,12 +44,25 @@ const AuthProvider = ({children}) => {
       })
     }
    
+
+    // save user database
+    const saveUser = async user =>{
+      const currentUser = {
+        email:user?.email,
+        role: 'guest',
+        status: 'verified'
+      }
+      const {data} = axios.put('http://localhost:5000/users',currentUser)
+      return data
+    }
+
+
   
     // onAuthStateChange
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, currentUser => {
         setUser(currentUser)
-      
+        saveUser(currentUser)
         setLoading(false)
       })
       return () => {

@@ -13,6 +13,7 @@ import Forum from "../Components/Pages/Forum/Forum";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddNewClass from "../Components/DashBoard/Admin/AddNewClass";
 import AddBlog from "../Components/DashBoard/AddBlog/AddBlog";
+import ForumDetails from "../Components/Pages/Forum/ForumDetails";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -41,6 +42,10 @@ import AddBlog from "../Components/DashBoard/AddBlog/AddBlog";
         {
           path: '/forum',
           element: <Forum></Forum>
+        },
+        {
+          path:'/blog-details/:id',
+          element: <ForumDetails></ForumDetails>
         }
       ]
     },
