@@ -11,6 +11,8 @@ import AllClass from "../Components/Pages/AllClasses/AllClass";
 import Forum from "../Components/Pages/Forum/Forum";
 
 import DashboardLayout from "../Layout/DashboardLayout";
+import AddNewClass from "../Components/DashBoard/Admin/AddNewClass";
+import AddBlog from "../Components/DashBoard/AddBlog/AddBlog";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -48,7 +50,14 @@ import DashboardLayout from "../Layout/DashboardLayout";
       path: '/dashBoard',
       element: <DashboardLayout></DashboardLayout>,
       children:[
-
+       {
+        path:'addNewClass',
+        element: <AddNewClass></AddNewClass>
+       },
+       {
+        path: 'addBlog',
+        element: <AddBlog></AddBlog>
+       }
       ]
     }
   ]);
