@@ -14,10 +14,12 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import AddNewClass from "../Components/DashBoard/Admin/AddNewClass";
 import AddBlog from "../Components/DashBoard/AddBlog/AddBlog";
 import ForumDetails from "../Components/Pages/Forum/ForumDetails";
+import Error from "../Components/Error/Error";
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
+      errorElement: <Error></Error>,
       children:[
         {
             path: '/',
