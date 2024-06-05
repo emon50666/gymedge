@@ -15,6 +15,9 @@ import AddNewClass from "../Components/DashBoard/Admin/AddNewClass";
 import AddBlog from "../Components/DashBoard/AddBlog/AddBlog";
 import ForumDetails from "../Components/Pages/Forum/ForumDetails";
 import Error from "../Components/Error/Error";
+import Profile from "../Components/DashBoard/Profile/Profile";
+import BecomeATrainer from "../Components/Pages/AllTrainer/BecomeATrainer";
+import AppliedTrainer from "../Components/DashBoard/Trainer/AppliedTrainer";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -48,14 +51,20 @@ import Error from "../Components/Error/Error";
         {
           path:'/blog-details/:id',
           element: <ForumDetails></ForumDetails>
+        },
+        {
+          path: '/become-A-Trainer',
+          element: <BecomeATrainer></BecomeATrainer>
         }
       ]
     },
 
     // dashboard route
     {
+      
       path: '/dashBoard',
       element: <DashboardLayout></DashboardLayout>,
+     
       children:[
        {
         path:'addNewClass',
@@ -64,9 +73,18 @@ import Error from "../Components/Error/Error";
        {
         path: 'addBlog',
         element: <AddBlog></AddBlog>
-       }
+       },
+       {
+        path: 'profile',
+        element: <Profile></Profile>
+      },
+      {
+        path: 'applied-Trainer',
+        element: <AppliedTrainer></AppliedTrainer>
+      }
       ]
-    }
+    },
+ 
   ]);
 
   export default router;
