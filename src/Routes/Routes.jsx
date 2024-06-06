@@ -18,6 +18,8 @@ import Error from "../Components/Error/Error";
 import Profile from "../Components/DashBoard/Profile/Profile";
 import BecomeATrainer from "../Components/Pages/AllTrainer/BecomeATrainer";
 import AppliedTrainer from "../Components/DashBoard/Trainer/AppliedTrainer";
+import RequestATrainer from "../Components/DashBoard/RequestATrainer/RequestATrainer";
+import Manageuser from "../Components/DashBoard/ManageUser/Manageuser";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -81,6 +83,14 @@ import AppliedTrainer from "../Components/DashBoard/Trainer/AppliedTrainer";
       {
         path: 'applied-Trainer',
         element: <AppliedTrainer></AppliedTrainer>
+      },
+      {
+        path: 'request-Trainer',
+        element: <RequestATrainer></RequestATrainer>
+      },
+      {
+        path: 'manage-user-role',
+        element: <Manageuser></Manageuser>
       }
       ]
     },

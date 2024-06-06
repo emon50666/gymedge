@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 
 import logo from '../../assets/logo.png'
-import useAxiosPublic from "../Hook/useAxiosPublic";
+import { MdLogout } from "react-icons/md";
+// import useAxiosPublic from "../Hook/useAxiosPublic";
 
-import { toast,Toaster } from "react-hot-toast";
+// import { toast,Toaster } from "react-hot-toast";
 
 
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
 
   // const modalHandler = async () =>{
   //   console.log('i want to be trainer');
@@ -39,31 +40,31 @@ const Navbar = () => {
   //     toast.error(error.message)
   //   }
   // }
-  const modalHandler = async () => {
-    console.log('I want to be a trainer');
+  // const modalHandler = async () => {
+  //   console.log('I want to be a trainer');
   
-    try {
-      const currentUser = {
-        email: user?.email,
-        role: 'guest',
-        status: 'Requested',
-      };
+  //   try {
+  //     const currentUser = {
+  //       email: user?.email,
+  //       role: 'guest',
+  //       status: 'Requested',
+  //     };
       
-      // Await the axios PUT request and destructure the response
-      const { data } = await axiosPublic.put('/users', currentUser);
+  //     // Await the axios PUT request and destructure the response
+  //     const { data } = await axiosPublic.put('/users', currentUser);
   
-      // Check the modifiedCount from the response data
-      if (data.modifiedCount > 0) {
-        toast.success('Host request success');
-      } else {
-        toast.success('Please wait for admin approval');
-      }
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
-    }
-  };
+  //     // Check the modifiedCount from the response data
+  //     if (data.modifiedCount > 0) {
+  //       toast.success('Host request success');
+  //     } else {
+  //       toast.success('Please wait for admin approval');
+  //     }
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error(error.message);
+  //   }
+  // };
   
 
 
@@ -114,28 +115,9 @@ const Navbar = () => {
               <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 
                 <Link to={'/dashBoard/profile'}> <li className="font-semibold  mt-2 mb-5">Dashboard</li> </Link>
-                <Link to={'/login'}> <button onClick={() => logOut()} className="  w-full mr-4 pt-2 pb-2 pl-6 pr-6 bg-orange-400 rounded-full text-white font-bold hover:bg-white hover:text-orange-500 delay-200 hover:border hover:border-orange-400 ">LogOut</button></Link>
+                <Link to={'/login'}> <button onClick={() => logOut()} className=" flex items-center gap-2  text-start mr-4 pt-2 pb-2 pl-6 pr-6 rounded-full text-black font-bold hover:bg-white  "><MdLogout className="mt-1"></MdLogout> LogOut</button></Link>
 
-                <div className="mt-3">
-                  {/* The button to open modal */}
-                  <label htmlFor="my_modal_6" className="btn">You Want To Trainer</label>
-
-                  {/* Put this part before </body> tag */}
-                  <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-                  <div className="modal" role="dialog">
-                    <div className="modal-box">
-                     <button onClick={modalHandler} className="btn bg-orange-500 "> Yes
-                     
-                      </button>
-                    
-                      <div className="modal-action">
-                        <label htmlFor="my_modal_6" className="btn">Close!</label>
-                      </div>
-                    </div>
-                    <Toaster></Toaster>
-                  </div>
-                  
-                </div>
+               
 
               </ul>
 
