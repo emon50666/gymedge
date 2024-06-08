@@ -15,7 +15,7 @@ const AddNewClassForm = () => {
   
     const {mutateAsync} = useMutation({
         mutationFn: async (addClassData)=>{
-            const {data } = await axiosPublic.post( '/blog',addClassData)
+            const {data } = await axiosPublic.post( '/jymClass',addClassData)
             return data ;
         },
         onSuccess:()=>{

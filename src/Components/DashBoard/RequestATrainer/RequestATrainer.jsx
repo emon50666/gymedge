@@ -23,7 +23,7 @@ const RequestATrainer = () => {
       
           // Check the modifiedCount from the response data
           if (data.modifiedCount > 0) {
-            toast.success('Host request success');
+            toast.success('Trainer request success');
           } else {
             toast.success('Please wait for admin approval');
           }
