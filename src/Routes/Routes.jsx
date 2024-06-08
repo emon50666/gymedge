@@ -22,6 +22,8 @@ import RequestATrainer from "../Components/DashBoard/RequestATrainer/RequestATra
 import Manageuser from "../Components/DashBoard/ManageUser/Manageuser";
 import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails";
 import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
+import AllTrainerDashboard from "../Components/DashBoard/Trainer/AllTrainerDashboard";
+import PrivateRoute from './../AuthProvider/PrivateRoute';
   const router = createBrowserRouter([
     {
       path: "/",
@@ -60,7 +62,7 @@ import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
         },
         {
           path: '/become-A-Trainer',
-          element: <BecomeATrainer></BecomeATrainer>
+          element: <PrivateRoute><BecomeATrainer></BecomeATrainer></PrivateRoute>
         },
         {
           path:'/trainer-Details/:id',
@@ -74,16 +76,17 @@ import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
     {
       
       path: '/dashBoard',
-      element: <DashboardLayout></DashboardLayout>,
+      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
      
       children:[
        {
         path:'addNewClass',
-        element: <AddNewClass></AddNewClass>
+        element: <PrivateRoute> <AddNewClass></AddNewClass></PrivateRoute>,
        },
        {
         path: 'addBlog',
-        element: <AddBlog></AddBlog>
+        element:  <PrivateRoute><AddBlog></AddBlog></PrivateRoute>
+
        },
        {
         path: 'profile',
@@ -91,7 +94,7 @@ import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
       },
       {
         path: 'applied-Trainer',
-        element: <AppliedTrainer></AppliedTrainer>,
+        element:  <PrivateRoute><AppliedTrainer></AppliedTrainer></PrivateRoute>
        
      
       },
@@ -101,11 +104,15 @@ import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
       },
       {
         path: 'manage-user-role',
-        element: <Manageuser></Manageuser>
+        element: <PrivateRoute><Manageuser></Manageuser></PrivateRoute>
       },
       {
         path: 'news-letter',
-         element : <NewsLetterEmail></NewsLetterEmail>
+         element : <PrivateRoute><NewsLetterEmail></NewsLetterEmail></PrivateRoute>
+      },
+      {
+        path: 'all-Trainer',
+        element: <PrivateRoute><AllTrainerDashboard></AllTrainerDashboard></PrivateRoute>
       }
       ]
     },
