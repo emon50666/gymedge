@@ -21,6 +21,7 @@ import AppliedTrainer from "../Components/DashBoard/Trainer/AppliedTrainer";
 import RequestATrainer from "../Components/DashBoard/RequestATrainer/RequestATrainer";
 import Manageuser from "../Components/DashBoard/ManageUser/Manageuser";
 import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails";
+import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -63,7 +64,8 @@ import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails"
         },
         {
           path:'/trainer-Details/:id',
-          element: <AllTrainerDetails></AllTrainerDetails>
+          element: <AllTrainerDetails></AllTrainerDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
         }
       ]
     },
@@ -89,7 +91,9 @@ import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails"
       },
       {
         path: 'applied-Trainer',
-        element: <AppliedTrainer></AppliedTrainer>
+        element: <AppliedTrainer></AppliedTrainer>,
+       
+     
       },
       {
         path: 'request-Trainer',
@@ -98,6 +102,10 @@ import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails"
       {
         path: 'manage-user-role',
         element: <Manageuser></Manageuser>
+      },
+      {
+        path: 'news-letter',
+         element : <NewsLetterEmail></NewsLetterEmail>
       }
       ]
     },

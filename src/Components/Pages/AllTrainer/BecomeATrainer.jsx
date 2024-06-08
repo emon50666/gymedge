@@ -144,9 +144,9 @@ const BecomeATrainer = () => {
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">Available Time in a Day:</label>
           <input
-            type="text"
+            type="number"
             name="time"
-           placeholder="Example: 1,2 Hour"
+           
             required
             className="p-2 border border-gray-300 rounded-md"
           />

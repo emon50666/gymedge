@@ -1,7 +1,8 @@
 import { BsWatch } from "react-icons/bs";
 import { GiSkills } from "react-icons/gi";
+import { IoMan } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import { WiDayLightWind } from "react-icons/wi";
 
 const AllTrainerCard = ({ applie }) => {
     const { name, image, time, skill,age,day,_id} = applie;
@@ -12,12 +13,12 @@ const AllTrainerCard = ({ applie }) => {
                 <div className="card-body">
                     <h2 className="card-title font-semibold text-2xl"> {name} </h2>
                     <div className="flex justify-around ">
-                        <p className="font-semibold flex items-center gap-2"> <BsWatch className="text-orange-500"></BsWatch>  Hour: {time} </p>
+                        <p className="font-semibold flex items-center gap-2"> <BsWatch className="text-orange-500"></BsWatch>   {time} </p>
                         <p className="font-semibold flex items-center gap-2"> <GiSkills className="text-orange-500"></GiSkills> Skill : {skill} </p>
                     </div>
                     <div className="flex justify-around  text-start">
-                        <p className="font-semibold flex items-center gap-2"> <BsWatch className="text-orange-500"></BsWatch>  Age: {age} </p>
-                        <p className="font-semibold flex items-center gap-2"> <GiSkills className="text-orange-500"></GiSkills>  Day : {day} </p>
+                        <p className="font-semibold flex items-center gap-2"> <IoMan className="text-orange-500"></IoMan>  Age: {age} </p>
+                        <p className="font-semibold flex items-center gap-2"> <WiDayLightWind className="text-orange-500"></WiDayLightWind>  Day : {day} </p>
                     </div>
 
                     <div className="card-actions justify-end">
