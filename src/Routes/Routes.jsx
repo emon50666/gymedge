@@ -20,6 +20,7 @@ import BecomeATrainer from "../Components/Pages/AllTrainer/BecomeATrainer";
 import AppliedTrainer from "../Components/DashBoard/Trainer/AppliedTrainer";
 import RequestATrainer from "../Components/DashBoard/RequestATrainer/RequestATrainer";
 import Manageuser from "../Components/DashBoard/ManageUser/Manageuser";
+import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -52,11 +53,17 @@ import Manageuser from "../Components/DashBoard/ManageUser/Manageuser";
         },
         {
           path:'/blog-details/:id',
-          element: <ForumDetails></ForumDetails>
+          element: <ForumDetails></ForumDetails>,
+          loader: ({params}) => fetch( `http://localhost:5000/blog/${params.id}`)
+          
         },
         {
           path: '/become-A-Trainer',
           element: <BecomeATrainer></BecomeATrainer>
+        },
+        {
+          path:'/trainer-Details/:id',
+          element: <AllTrainerDetails></AllTrainerDetails>
         }
       ]
     },

@@ -84,6 +84,7 @@ const BecomeATrainer = () => {
           <input
             type="text"
             name="name"
+            placeholder="Your Full Name"
             required
             className="p-2 border border-gray-300 rounded-md"
           />
@@ -103,6 +104,7 @@ const BecomeATrainer = () => {
           <input
             type="number"
             name="age"
+            placeholder="Select Age"
             required
             className="p-2 border border-gray-300 rounded-md"
           />
@@ -144,14 +146,14 @@ const BecomeATrainer = () => {
           <input
             type="text"
             name="time"
-           
+           placeholder="Example: 1,2 Hour"
             required
             className="p-2 border border-gray-300 rounded-md"
           />
         </div>
        
         <div className="sm:col-span-2 flex justify-end">
-          <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          <button type="submit" className="px-6 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-700">
             Apply
           </button>
         </div>

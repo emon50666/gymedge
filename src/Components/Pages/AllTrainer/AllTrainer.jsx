@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import AllTrainerCard from "./AllTrainerCard";
 
 
 const AllTrainer = () => {
@@ -20,13 +21,12 @@ const AllTrainer = () => {
              <Helmet>
                 <title>GYM EDGE || All Trainer </title>
             </Helmet>
-            <h2 className="text-4xl"> all trainer page</h2>
-            <Link to={'/become-A-Trainer'}><button  className="btn bg-orange-500 text-white"> Become A Trainer </button></Link>
+            
 
 
-            <div>
+            <div className=" container mx-auto grid md:grid-cols-3 gap-5">
             {
-                applieds.map(applie => <li key={applie._id}> {applie.name} {applie.age}  </li>)
+                applieds.map(applie => <AllTrainerCard key={applie._id} applie={applie}></AllTrainerCard>)
             }
             </div>
         </div>

@@ -1,72 +1,14 @@
 import { Link } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
-
-import logo from '../../assets/logo.png'
 import { MdLogout } from "react-icons/md";
-// import useAxiosPublic from "../Hook/useAxiosPublic";
+import logo from '../../assets/logo.png'
 
-// import { toast,Toaster } from "react-hot-toast";
 
 
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  // const axiosPublic = useAxiosPublic();
-
-  // const modalHandler = async () =>{
-  //   console.log('i want to be trainer');
-
-  //   try{
-  //     const currentUser = {
-  //       email:user?.email,
-  //       role: 'guest',
-  //       status: 'Requested'
-  //     }
-  //     const {data} = axiosPublic.put('/users',currentUser)
-  //     if(data.modifiedCount > 0){
-  //       toast.success('host request success')
-  //     }
-  //     else{
-  //       toast.error('place wait for admin approval')
-  //     }
-  //     console.log(data);
-      
-     
-  //   }
-    
-    
-  //   catch(error){
-  //     console.log(error);
-  //     toast.error(error.message)
-  //   }
-  // }
-  // const modalHandler = async () => {
-  //   console.log('I want to be a trainer');
   
-  //   try {
-  //     const currentUser = {
-  //       email: user?.email,
-  //       role: 'guest',
-  //       status: 'Requested',
-  //     };
-      
-  //     // Await the axios PUT request and destructure the response
-  //     const { data } = await axiosPublic.put('/users', currentUser);
-  
-  //     // Check the modifiedCount from the response data
-  //     if (data.modifiedCount > 0) {
-  //       toast.success('Host request success');
-  //     } else {
-  //       toast.success('Please wait for admin approval');
-  //     }
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error(error.message);
-  //   }
-  // };
-  
-
 
 
   return (
@@ -114,7 +56,7 @@ const Navbar = () => {
               </div>
               <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 
-                <Link to={'/dashBoard/profile'}> <li className="font-semibold  mt-2 mb-5">Dashboard</li> </Link>
+                <Link to={'/dashBoard/profile'}> <li className="font-bold ml-5   mt-2 mb-5">  Dashboard</li> </Link>
                 <Link to={'/login'}> <button onClick={() => logOut()} className=" flex items-center gap-2  text-start mr-4 pt-2 pb-2 pl-6 pr-6 rounded-full text-black font-bold hover:bg-white  "><MdLogout className="mt-1"></MdLogout> LogOut</button></Link>
 
                
