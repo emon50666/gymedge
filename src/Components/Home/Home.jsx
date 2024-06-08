@@ -5,7 +5,7 @@ import Feature from "../Pages/Feature/Feature";
 import Testomonial from "../Pages/Testomonial/Testomonial";
 import Team from "../Pages/Team/Team";
 import NewsLetter from "../Pages/NewsLetter/NewsLetter";
-import Modal from "../Pages/Modal/Modal";
+
 
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
            <Testomonial></Testomonial>
            <NewsLetter></NewsLetter>
            <Team></Team>
-           <Modal></Modal>
+          
         </div>
     );
 };

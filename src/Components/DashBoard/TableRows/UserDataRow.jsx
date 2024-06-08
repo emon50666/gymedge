@@ -1,31 +1,104 @@
 import PropTypes from 'prop-types'
 import { Fragment, useState } from 'react'
-import {
-  Dialog,
-  Listbox,
-  Transition,
-  TransitionChild,
-  DialogTitle,
-  DialogPanel,
-  ListboxButton,
-  ListboxOption,
-  ListboxOptions,
-} from '@headlessui/react'
-import { BsCheckLg } from 'react-icons/bs'
-import { AiOutlineDown } from 'react-icons/ai'
 
+
+
+
+
+import useAxiosPublic from '../../Hook/useAxiosPublic'
+
+import { useMutation } from '@tanstack/react-query'
+import toast from 'react-hot-toast';
+
+import {  Dialog, DialogPanel, DialogTitle, Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition, TransitionChild, } from '@headlessui/react';
+import { BsCheckLg } from 'react-icons/bs';
+import { AiOutlineDown } from 'react-icons/ai';
+
+// import Modal from '../../Pages/Modal/Modal';
 const roles = ['member', 'trainer', 'admin']
 
 
-
-const Modal = ({ setIsOpen, isOpen, modalHandler, }) => {
-  
-  console.log(modalHandler,setIsOpen);
-
+const UserDataRow = ({ user, refetch }) => {
+  console.log(user);
 
   const [selected, setSelected] = useState()
+
+  const [isOpen, setIsOpen] = useState(false)
+  const axiosPublic = useAxiosPublic();
+
+  const { mutateAsync } = useMutation({
+    mutationFn: async role => {
+      const { data } = await axiosPublic.patch(
+        `/users/update/${user?.email}`,
+        role
+      )
+      return data
+    },
+    onSuccess: data => {
+      refetch()
+      console.log(data)
+      toast.success('User role updated successfully!')
+      setIsOpen(false)
+    },
+  })
+
+  //   modal handler
+  const modalHandler = async selected => {
+    const userRole = {
+      role: selected,
+      status: 'Verified',
+    }
+
+    try {
+      await mutateAsync(userRole)
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
+    }
+  }
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <tr>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <p className='text-gray-900 whitespace-no-wrap'>{user?.email}</p>
+      </td>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <p className='text-gray-900 whitespace-no-wrap'>{user?.role}</p>
+      </td>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        {user?.status ? (
+          <p
+            className={`${user.status === 'Verified' ? 'text-green-500' : 'text-orange-500'
+              } whitespace-no-wrap`}
+          >
+            {user.status}
+          </p>
+        ) : (
+          <p className='text-red-500 whitespace-no-wrap'>Unavailable</p>
+        )}
+      </td>
+
+      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <button
+          onClick={() => setIsOpen(true)}
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+        >
+          <span
+            aria-hidden='true'
+            className='absolute inset-0 bg-orange-200 opacity-50 rounded-full'
+          ></span>
+          <span className='relative'>Update Role</span>
+        </button>
+        {/* Update User Modal */}
+        {/* <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          modalHandler={modalHandler}
+          user={user}
+        /> */}
+
+
+
+<Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as='div'
         className='relative z-10'
@@ -82,6 +155,7 @@ const Modal = ({ setIsOpen, isOpen, modalHandler, }) => {
                         <ListboxOptions className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
                           {roles.map((role, roleIdx) => (
                             <ListboxOption
+
                               key={roleIdx}
                               className='relative cursor-default select-none py-2 pl-10 pr-4 text-gray-900 data-[focus]:bg-amber-100  data-[focus]:text-orange-500'
                               value={role}
@@ -136,14 +210,14 @@ const Modal = ({ setIsOpen, isOpen, modalHandler, }) => {
         </div>
       </Dialog>
     </Transition>
+      </td>
+    </tr>
   )
 }
 
-Modal.propTypes = {
+UserDataRow.propTypes = {
   user: PropTypes.object,
-  modalHandler: PropTypes.func,
-  setIsOpen: PropTypes.func,
-  isOpen: PropTypes.bool,
+  refetch: PropTypes.func,
 }
 
-export default Modal
+export default UserDataRow

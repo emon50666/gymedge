@@ -6,10 +6,11 @@ import useAuth from "../Hook/useAuth";
 import {   FaHome, } from "react-icons/fa";
 
 
-import { IoMdSettings } from "react-icons/io";
+
 import useRoll from "../Hook/useRoll";
 import TrainerMenu from "./SideBarMenu/TrainerMenu";
 import AdminMenu from "./SideBarMenu/AdminMenu";
+import MemberMenu from "./SideBarMenu/MemberMenu";
 
 
 const SideBar = () => {
@@ -71,17 +72,20 @@ const SideBar = () => {
           <div>
             <ul className="flex flex-1 flex-col gap-1 py-3">
               <li className="px-3">
-                <Link to={'/'} className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-orange-50 hover:text-orange-500 focus:bg-orange-50 aria-[current=page]:bg-orange-50 aria-[current=page]:text-orange-500 " >
+                <Link to={'/'} className="flex items-center gap-3 rounded p-3 ml-4 text-slate-700 transition-colors hover:bg-orange-50 hover:text-orange-500 focus:bg-orange-50 aria-[current=page]:bg-orange-50 aria-[current=page]:text-orange-500 " >
                   <FaHome className="className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm></FaHome>  Home </Link>
               </li>
              
              
-              <div className="divider divider-warning">Trainer </div>
+            
 
               {/* trainer dashboard route */}
-              {role === 'host' && <TrainerMenu></TrainerMenu>}
+           
               {role === 'admin' && <AdminMenu></AdminMenu>}
-              {role === 'guest' && <TrainerMenu></TrainerMenu>}
+              {role === 'trainer' && <TrainerMenu></TrainerMenu>}
+              {role === 'member' && <MemberMenu></MemberMenu>}
+          
+
 
 
               
@@ -92,7 +96,7 @@ const SideBar = () => {
           
         </nav>
         <div className="mb-5 ml-6  ">
-       <Link to={'profile'}> <button onClick={()=>logOut()} className="flex font-bold text-orange-500 items-center mb-5 mt-5 gap-2"> <IoMdSettings></IoMdSettings> Profile</button></Link>
+      
        <Link to={'/login'}> <button onClick={()=>logOut()} className="flex items-center gap-2"> <MdLogout></MdLogout> Log Out</button></Link>
         </div>
       </aside>
