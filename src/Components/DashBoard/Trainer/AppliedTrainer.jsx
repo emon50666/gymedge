@@ -37,7 +37,7 @@ const AppliedTrainer = () => {
                                 <tr key={applie._id} className="">
                                 <th> {index + 1} </th>
                                 <td> {applie.name} </td>
-                                <td> {applie?.skill} </td>
+                                <td> {applie?.skill + ' '} </td>
                                 <td>
                                 <Link to={`/trainer-Details/${applie._id}`}>
                                    <button className=" pl-3 pr-4 pt-1 pb-1 rounded-lg bg-orange-500 text-white"> Details </button>
