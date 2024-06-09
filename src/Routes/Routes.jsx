@@ -24,6 +24,8 @@ import AllTrainerDetails from "../Components/Pages/AllTrainer/AllTrainerDetails"
 import NewsLetterEmail from "../Components/Pages/NewsLetter/NewsLetterEmail";
 import AllTrainerDashboard from "../Components/DashBoard/Trainer/AllTrainerDashboard";
 import PrivateRoute from './../AuthProvider/PrivateRoute';
+import AdminRoute from "../Components/AdminPrivateRoute/AdminRoute";
+import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -62,7 +64,7 @@ import PrivateRoute from './../AuthProvider/PrivateRoute';
         },
         {
           path: '/become-A-Trainer',
-          element: <PrivateRoute><BecomeATrainer></BecomeATrainer></PrivateRoute>
+          element: <PrivateRoute> <BecomeATrainer></BecomeATrainer> </PrivateRoute>
         },
         {
           path:'/trainer-Details/:id',
@@ -104,7 +106,7 @@ import PrivateRoute from './../AuthProvider/PrivateRoute';
       },
       {
         path: 'manage-user-role',
-        element: <PrivateRoute><Manageuser></Manageuser></PrivateRoute>
+        element: <PrivateRoute> <AdminRoute><Manageuser></Manageuser></AdminRoute> </PrivateRoute>
       },
       {
         path: 'news-letter',
@@ -113,7 +115,11 @@ import PrivateRoute from './../AuthProvider/PrivateRoute';
       {
         path: 'all-Trainer',
         element: <PrivateRoute><AllTrainerDashboard></AllTrainerDashboard></PrivateRoute>
-      }
+      },
+    {
+      path: 'slot',
+      element: <AddNewSlot></AddNewSlot>
+    }
       ]
     },
  

@@ -15,6 +15,7 @@ const AllTrainer = () => {
             return res.data;
         }
     })
+    console.log(applieds);
 
     return (
         <div className="text-center mt-10 mb-10">
