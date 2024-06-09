@@ -1,22 +1,23 @@
 import { BsWatch } from 'react-icons/bs';
 import callToAction from '../../../assets/calltoaction.png';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { GiSkills } from 'react-icons/gi';
 import useAxiosPublic from '../../Hook/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
-import useAuth from '../../Hook/useAuth';
+
 
 const AllTrainerDetails = () => {
     const axiosPublic = useAxiosPublic();
-    const { user } = useAuth();
+   
+    const {trainerEmail} = useParams();
     
     const { data: slots = [], isLoading, error } = useQuery({
-        queryKey: ['slots', user?.email],
+        queryKey: ['slots', trainerEmail],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/slots/${user?.email}`);
+            const res = await axiosPublic.get(`/slots/${trainerEmail}`);
             return res.data;
         },
-        enabled: !!user?.email  // Ensure the query runs only if email is available
+        enabled: !!trainerEmail  // Ensure the query runs only if email is available
     });
 
     const applied = useLoaderData();

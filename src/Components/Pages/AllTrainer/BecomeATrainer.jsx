@@ -47,6 +47,7 @@ const BecomeATrainer = () => {
                 skill: selectedSkills.map(skill => skill.value),
                 day: selectedDays.map(day => day.value),
                 time,
+                email:user?.email,
                 date: new Date()
             };
             console.log(appliData);

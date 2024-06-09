@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const AllTrainerCard = ({ applie }) => {
     console.log(applie);
-    const { name, image, time, skill = [], age, day, _id } = applie || {};
+    const { name, image, time, skill = [], age, day, _id ,email} = applie || {};
     console.log(skill);
 
     return (
@@ -26,7 +26,7 @@ const AllTrainerCard = ({ applie }) => {
                         <p className="font-semibold flex items-center gap-2"> <WiDayLightWind className="text-orange-500" /> Day: {day + ' '} </p>
                     </div>
                     <div className="card-actions justify-end">
-                        <Link to={`/trainer-Details/${_id}`}>
+                        <Link to={`/trainer-Details/${_id}/${email}`}>
                             <button className="btn bg-orange-500 underline text-white font-bold w-full mt-3 text-lg hover:bg-orange-600"> Know More </button>
                         </Link>
                     </div>

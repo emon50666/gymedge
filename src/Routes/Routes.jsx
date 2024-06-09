@@ -67,7 +67,7 @@ import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
           element: <PrivateRoute> <BecomeATrainer></BecomeATrainer> </PrivateRoute>
         },
         {
-          path:'/trainer-Details/:id',
+          path:'/trainer-Details/:id/:trainerEmail',
           element: <AllTrainerDetails></AllTrainerDetails>,
           loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
         }
