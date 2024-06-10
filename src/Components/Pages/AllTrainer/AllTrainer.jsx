@@ -27,7 +27,8 @@ const AllTrainer = () => {
 
             <div className=" container mx-auto grid md:grid-cols-3 gap-5">
             {
-                applieds.map(applie => <AllTrainerCard key={applie._id} applie={applie}></AllTrainerCard>)
+                 Array.isArray(applieds) && applieds.length > 0 &&
+                applieds?.map(applie => <AllTrainerCard key={applie._id} applie={applie}></AllTrainerCard>)
             }
             </div>
         </div>

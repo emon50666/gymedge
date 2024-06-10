@@ -42,16 +42,6 @@ const Register = () => {
 
         // update profile
        await updateUserProfile(name,data.data.display_url)
-    //    const userInfo = {
-    //     displayName: name,
-    //     email: user.email,
-    //     role: 'guest',
-    //     status: 'verified'
-    //     }
-    //    await axiosPublic.post('/users', userInfo)
-
-    
-        
             toast.success('account create successfully')
             navigate('/')
 

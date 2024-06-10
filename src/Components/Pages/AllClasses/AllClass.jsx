@@ -25,7 +25,7 @@ const AllClass = () => {
             </Helmet>
             <div className="container mx-auto mt-10 mb-10 grid md:grid-cols-3 gap-5">
                 {
-                    jymAddClass.map(classAdd => <AllClassCard key={classAdd._id} classAdd={classAdd}></AllClassCard>)
+                  Array.isArray(jymAddClass) && jymAddClass.length > 0 && jymAddClass.map(classAdd => <AllClassCard key={classAdd._id} classAdd={classAdd}></AllClassCard>)
                 }
             </div>
             

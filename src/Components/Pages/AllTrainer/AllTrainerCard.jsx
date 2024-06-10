@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { WiDayLightWind } from "react-icons/wi";
 import PropTypes from 'prop-types';
 
-const AllTrainerCard = ({ applie }) => {
+const AllTrainerCard = ({ applie, }) => {
     console.log(applie);
     const { name, image, time, skill = [], age, day, _id ,email} = applie || {};
     console.log(skill);

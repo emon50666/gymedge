@@ -26,6 +26,7 @@ import AllTrainerDashboard from "../Components/DashBoard/Trainer/AllTrainerDashb
 import PrivateRoute from './../AuthProvider/PrivateRoute';
 import AdminRoute from "../Components/AdminPrivateRoute/AdminRoute";
 import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
+import TrainerBooking from "../Components/DashBoard/TrainerBooking/TrainerBooking";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -50,7 +51,8 @@ import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
         },
         {
           path: '/allClass',
-          element: <AllClass></AllClass>
+          element: <AllClass></AllClass>,
+       
         },
         {
           path: '/forum',
@@ -69,6 +71,11 @@ import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
         {
           path:'/trainer-Details/:id/:trainerEmail',
           element: <AllTrainerDetails></AllTrainerDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
+        },
+        {
+          path: '/booking-A-Trainer/:id',
+          element: <TrainerBooking></TrainerBooking>,
           loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
         }
       ]

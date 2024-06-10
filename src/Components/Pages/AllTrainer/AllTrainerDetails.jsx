@@ -15,16 +15,17 @@ const AllTrainerDetails = () => {
         queryKey: ['slots', trainerEmail],
         queryFn: async () => {
             const res = await axiosPublic.get(`/slots/${trainerEmail}`);
+            console.log(res.data);
             return res.data;
         },
         enabled: !!trainerEmail  // Ensure the query runs only if email is available
     });
 
     const applied = useLoaderData();
-    const { name, image, time, skill } = applied;
+    const { name, image, time, skill, _id } = applied;
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className='text-center'>Loading...</div>;
     }
 
     if (error) {
@@ -54,7 +55,9 @@ const AllTrainerDetails = () => {
                             {
                                 Array.isArray(slots) && slots.length > 0 ? (
                                     slots.map((slot, index) => (
-                                        <button className='btn mr-2' key={index}> {slot.name} - {slot.time} </button>
+                                        <>
+                                        <Link to={`/booking-A-Trainer/${_id}`}><button className='btn mr-2' key={index}> {slot.name} - {slot.time} </button></Link>
+                                        </>
                                     ))
                                 ) : (
                                     <p>No slots available</p>
@@ -77,8 +80,11 @@ const AllTrainerDetails = () => {
                         </p>
                     </div>
                     <div className="w-1/2 flex justify-end">
-                        <Link to={'/become-A-Trainer'} className="bg-orange-500 underline text-white py-3 px-6 rounded-full text-lg font-medium hover:bg-orange-700 transition duration-300">
-                            Become a Trainer
+                        <Link to={'/become-A-Trainer'} >
+                        <button className="bg-orange-500  w-full underline text-white pt-1 pb-2 pl-4 pr-4 rounded-full  md:text-lg font-medium hover:bg-orange-700 transition duration-300">
+                        Become a Trainer
+                        </button>
+                           
                         </Link>
                     </div>
                 </div>
