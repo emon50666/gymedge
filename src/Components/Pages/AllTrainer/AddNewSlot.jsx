@@ -10,31 +10,14 @@ const AddNewSlot = () => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
 
-    const options = [
-        { value: 'gym', label: 'gym' },
-        { value: 'running', label: 'running' },
-        { value: 'yoga', label: 'yoga' }
-    ];
+  
 
-    const slotOptions = [
-        { value: 'morning', label: 'morning' },
-        { value: 'night', label: 'night' },
-        { value: 'everytime', label: 'everytime' }
-    ];
-
-    const daysOptions = [
-        { value: 'Sun', label: 'Sunday' },
-        { value: 'Mon', label: 'Monday' },
-        { value: 'Tue', label: 'Tuesday' },
-        { value: 'Wed', label: 'Wednesday' },
-        { value: 'Thu', label: 'Thursday' },
-        { value: 'Fri', label: 'Friday' },
-        { value: 'Sat', label: 'Saturday' }
-    ];
-
-    const [selectedSkills, setSelectedSkills] = useState([]);
+  
+ 
     const [selectedDays, setSelectedDays] = useState([]);
-    const [selectedSlotName, setSelectedSlotName] = useState([]);
+ 
+    const [selectedClass, setSelectedClass] = useState([]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,7 +30,7 @@ const AddNewSlot = () => {
             const addSlot = {
                 name,
                 time,
-                skill: selectedSkills.map(skill => skill.value),
+               class:selectedClass.map(clas => clas.value),
                 day: selectedDays.map(day => day.value),
                 email: user?.email,
                 date: new Date()
@@ -76,6 +59,27 @@ const AddNewSlot = () => {
         label: jymClass.name
     }));
 
+
+
+
+    //  slot day
+    const { data: applied = [] } = useQuery({
+        queryKey: ['applied'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/applied`)
+            return res.data;
+        }
+    });
+
+
+
+    
+    const daysOptions = applied.map(applie => ({
+        value: applie.day,
+        label: applie.day
+    }));
+
+
     return (
         <div>
             <Helmet>
@@ -84,8 +88,20 @@ const AddNewSlot = () => {
             <div>
                 <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
                     <h1 className="text-2xl font-bold mb-6">Be a Trainer</h1>
+
+
+                    <div className="flex gap-3 mb-3">
+                      
+                        <input type="text" disabled defaultValue={user?.displayName} className="input input-bordered w-full max-w-xs" />
+                     
+                        <input type="email" disabled defaultValue={user?.email} className="input input-bordered w-full max-w-xs" />
+                        </div>
+
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                     
                         <div className="flex flex-col">
+                      
+
                             <label className="mb-1 font-semibold">Class Name:</label>
                             <Select
                                 isMulti
@@ -93,19 +109,14 @@ const AddNewSlot = () => {
                                 options={classOptions}
                                 className="basic-multi-select"
                                 classNamePrefix="select"
+                                value={selectedClass}
+                                onChange={setSelectedClass}
                             />
                         </div>
                         <div className="flex flex-col">
                             <label className="mb-1 font-semibold">Slot Name:</label>
-                            <Select
-                                isMulti
-                                name="name"
-                                options={slotOptions}
-                                className="basic-multi-select"
-                                classNamePrefix="select"
-                                value={selectedSlotName}
-                                onChange={setSelectedSlotName}
-                            />
+                       
+                            <input type="text" name="name" placeholder="Slot Name" className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="flex flex-col">
                             <label className="mb-1 font-semibold">Slot Time:</label>
@@ -115,20 +126,10 @@ const AddNewSlot = () => {
                                 placeholder="Slot Time"
                                 required
                                 className="p-2 border border-gray-300 rounded-md"
+
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <label className="mb-1 font-semibold">Skills:</label>
-                            <Select
-                                isMulti
-                                name="skill"
-                                options={options}
-                                className="basic-multi-select"
-                                classNamePrefix="select"
-                                value={selectedSkills}
-                                onChange={setSelectedSkills}
-                            />
-                        </div>
+                      
                         <div className="flex flex-col">
                             <label className="mb-1 font-semibold">Available Days a Week:</label>
                             <Select

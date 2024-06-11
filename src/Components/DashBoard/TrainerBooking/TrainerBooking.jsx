@@ -1,8 +1,9 @@
 
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import MemberShip from "../MemberShip/MemberShip";
 
 
 // import useSlot from "../../Hook/useSlot";
@@ -11,6 +12,8 @@ import { useState } from "react";
 const TrainerBooking = () => {
 
     const [trainerEmail,setTrainerEmail] = useState(null);
+   
+
 
 const {id} = useParams()
 console.log(id);
@@ -19,32 +22,47 @@ console.log(id);
 
 const axiosPublic = useAxiosPublic();
 
-
+// applied data
 const {data: applied = []} =  useQuery({
     queryKey: ['applied'],
     queryFn: async ()=>{
 
         const res = await axiosPublic.get(`/applied/${id}`)
         setTrainerEmail(res?.data?.email)
+        
         console.log(res.data);
         return res.data
         
 
     }
 })
-console.log(trainerEmail);
+// console.log(trainerEmail);
 
-
+// slot data 
 const {data: slots = []} =  useQuery({
-    queryKey: ['slots'],
+    queryKey: ['slots',trainerEmail],
     queryFn: async ()=>{
         const res = await axiosPublic.get(`/slots/${trainerEmail}`)
-        console.log(res.data);
+        // console.log(res.data);
         return res.data
 
     }
 })
   
+
+
+
+// jym Class data
+// const {data: jymAllClass = []} =  useQuery({
+//     queryKey: ['jymAllClass'],
+//     queryFn: async ()=>{
+//         const res = await axiosPublic.get(`/jymAllClass/`)
+//         console.log(res.data);
+//         return res.data
+
+//     }
+// })
+
  
 
     return (
@@ -55,12 +73,21 @@ const {data: slots = []} =  useQuery({
                 {
                   slots &&  slots.map(slot => <>
                     <h2 className="font-semibold text-2xl mt-2 pb-2 text-orange-500 capitalize"> {slot.name} - {slot.time} </h2>
+                    <h2 className="font-semibold pb-3">{slot.class}</h2>
                     </>)
                 }
                </div>
 
+               {/* class data map */}
+               <div>
+                
+               </div>
+
+             
                 
             </div>
+            <MemberShip></MemberShip>
+
         </div>
     );
 };

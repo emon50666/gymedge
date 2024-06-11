@@ -27,6 +27,8 @@ import PrivateRoute from './../AuthProvider/PrivateRoute';
 import AdminRoute from "../Components/AdminPrivateRoute/AdminRoute";
 import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
 import TrainerBooking from "../Components/DashBoard/TrainerBooking/TrainerBooking";
+import Payment from "../Components/DashBoard/Payment/Payment";
+import CheckOutFrom from "../Components/DashBoard/Payment/CheckOutFrom";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -77,6 +79,11 @@ import TrainerBooking from "../Components/DashBoard/TrainerBooking/TrainerBookin
           path: '/booking-A-Trainer/:id',
           element: <TrainerBooking></TrainerBooking>,
           loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
+        },
+       
+        {
+          path: '/checkout/:payment',
+          element: <Payment></Payment>,
         }
       ]
     },
