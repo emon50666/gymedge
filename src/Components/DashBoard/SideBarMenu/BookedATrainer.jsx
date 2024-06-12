@@ -24,7 +24,7 @@ const BookedATrainer = () => {
             };
 
             try {
-                const response = await axios.post("http://localhost:5000/api/reviews", reviewData);
+                const response = await axios.post("https://exame-12-server.vercel.app/api/reviews", reviewData);
                 console.log("Review submitted successfully:", response.data);
                 // Clear the form
                 setReviewText("");

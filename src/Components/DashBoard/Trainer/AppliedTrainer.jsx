@@ -32,8 +32,8 @@ const AppliedTrainer = () => {
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        {
-                            applied.map((applie,index) =>
+                        { 
+                          applied &&  applied.map((applie,index) =>
                                 <tr key={applie._id} className="">
                                 <th> {index + 1} </th>
                                 <td> {applie.name} </td>
