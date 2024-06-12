@@ -28,9 +28,10 @@ import AdminRoute from "../Components/AdminPrivateRoute/AdminRoute";
 import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
 import TrainerBooking from "../Components/DashBoard/TrainerBooking/TrainerBooking";
 import Payment from "../Components/DashBoard/Payment/Payment";
-import CheckOutFrom from "../Components/DashBoard/Payment/CheckOutFrom";
+
 import ManageSlot from "../Components/Pages/AllTrainer/ManageSlot";
 import BookedATrainer from "../Components/DashBoard/SideBarMenu/BookedATrainer";
+import Blance from "../Components/DashBoard/Blance/Blance";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -142,7 +143,11 @@ import BookedATrainer from "../Components/DashBoard/SideBarMenu/BookedATrainer";
     },
     {
       path: 'booked-A-Trainer',
-      element: <BookedATrainer></BookedATrainer>
+      element: <BookedATrainer></BookedATrainer>,
+    },
+    {
+      path: 'balance',
+      element: <PrivateRoute> <Blance></Blance></PrivateRoute>
     }
       ]
     },

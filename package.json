@@ -31,6 +31,7 @@
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.23.1",
     "react-select": "^5.8.0",
+    "recharts": "^2.12.7",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.11.0",
     "wind-ui": "^0.17.0"
