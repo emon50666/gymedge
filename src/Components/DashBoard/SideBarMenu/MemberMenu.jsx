@@ -20,7 +20,7 @@ const MemberMenu = () => {
                   <FcSettings  className="className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm></FcSettings>  Profile Page </Link>
               </li>
               <li className="px-3">
-                <Link to={'request-Trainer'} className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-orange-50 hover:text-orange-500 focus:bg-orange-50 aria-[current=page]:bg-orange-50 aria-[current=page]:text-orange-500 " >
+                <Link to={'#'} className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-orange-50 hover:text-orange-500 focus:bg-orange-50 aria-[current=page]:bg-orange-50 aria-[current=page]:text-orange-500 " >
                   <BsBook  className="className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm></BsBook>  Booked Trainer </Link>
               </li>
               <li className="px-3">

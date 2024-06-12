@@ -29,6 +29,7 @@ import AddNewSlot from "../Components/Pages/AllTrainer/AddNewSlot";
 import TrainerBooking from "../Components/DashBoard/TrainerBooking/TrainerBooking";
 import Payment from "../Components/DashBoard/Payment/Payment";
 import CheckOutFrom from "../Components/DashBoard/Payment/CheckOutFrom";
+import ManageSlot from "../Components/Pages/AllTrainer/ManageSlot";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -83,7 +84,7 @@ import CheckOutFrom from "../Components/DashBoard/Payment/CheckOutFrom";
        
         {
           path: '/checkout/:payment',
-          element: <Payment></Payment>,
+          element: <PrivateRoute><Payment></Payment></PrivateRoute>,
         }
       ]
     },
@@ -133,6 +134,10 @@ import CheckOutFrom from "../Components/DashBoard/Payment/CheckOutFrom";
     {
       path: 'slot',
       element: <AddNewSlot></AddNewSlot>
+    },
+    {
+      path: 'manage-slot',
+      element: <ManageSlot></ManageSlot>
     }
       ]
     },
