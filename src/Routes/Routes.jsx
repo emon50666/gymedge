@@ -66,7 +66,7 @@ import Blance from "../Components/DashBoard/Blance/Blance";
         {
           path:'/blog-details/:id',
           element: <ForumDetails></ForumDetails>,
-          loader: ({params}) => fetch( `http://localhost:5000/blog/${params.id}`)
+          loader: ({params}) => fetch( `https://exame-12-server.vercel.app/blog/${params.id}`)
           
         },
         {
@@ -76,12 +76,12 @@ import Blance from "../Components/DashBoard/Blance/Blance";
         {
           path:'/trainer-Details/:id/:trainerEmail',
           element: <AllTrainerDetails></AllTrainerDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
+          loader: ({params}) => fetch(`https://exame-12-server.vercel.app/applied/${params.id}`)
         },
         {
           path: '/booking-A-Trainer/:id',
           element: <TrainerBooking></TrainerBooking>,
-          loader: ({params}) => fetch(`http://localhost:5000/applied/${params.id}`)
+          loader: ({params}) => fetch(`https://exame-12-server.vercel.app/applied/${params.id}`)
         },
        
         {
