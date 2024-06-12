@@ -1,31 +1,43 @@
-import { useEffect } from "react";
+import { useEffect,  } from "react";
 import Glide from "@glidejs/glide";
 import ReactStars from "react-rating-stars-component";
-import review_1 from '../../../assets/review_1.png';
 import '@smastrom/react-rating/style.css';
-import useReview from "../../Hook/useReview";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Testomonial = () => {
-    const [reviews] = useReview();
+    const axiosPublic = useAxiosPublic();
+
+    const { data: reviews = [] } = useQuery({
+        queryKey: ['reviews'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/reviews`);
+            console.log(res.data);
+            return res.data;
+        }
+    });
 
     useEffect(() => {
-        const slider = new Glide(".glide-04", {
-            type: "slider",
-            focusAt: "center",
-            perView: 1,
-            animationDuration: 700,
-            gap: 0,
-            classes: {
-                nav: {
-                    active: "[&>*]:bg-wuiSlate-700",
+        let slider;
+        if (reviews.length > 0) {
+            slider = new Glide(".glide-04", {
+                type: "slider",
+                focusAt: "center",
+                perView: 1,
+                animationDuration: 700,
+                gap: 0,
+                classes: {
+                    nav: {
+                        active: "[&>*]:bg-wuiSlate-700",
+                    },
                 },
-            },
-        }).mount();
+            }).mount();
+        }
 
         return () => {
-            slider.destroy();
+            if (slider) slider.destroy();
         };
-    }, []);
+    }, [reviews]);
 
     return (
         <div className="bg-orange-100/50">
@@ -37,7 +49,7 @@ const Testomonial = () => {
                         {reviews && reviews.map((review, index) => (
                             <li key={index} className="justify-center md:flex items-center">
                                 <div className="shadow-lg p-3 mx-auto justify-center bg-white shadow-orange-300/30 rounded-lg mb-5 border border-orange-500">
-                                    <img src={review_1} alt="" className="w-20 rounded-full border border-orange-500 p-2" />
+                                    <img src={'#'} alt="" className="w-20 rounded-full bg-orange-500 p-2" />
                                     <div className="px-4 md:text-start">
                                         <h1 className="font-bold">{review.email}</h1>
                                         <p className="md:w-[500px]">{review.review}</p>
