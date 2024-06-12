@@ -1,3 +1,4 @@
+[live site link ] (https://deluxe-dango-29ee5b.netlify.app/)
 - website name : gym edge
  - my website type : Fitness Tracker Project
  - responsive all device 
