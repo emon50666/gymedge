@@ -2,6 +2,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAuth from "../../Hook/useAuth";
+import toast, { Toaster } from "react-hot-toast";
 
 const CheckOutFrom = ({ price }) => {
     const stripe = useStripe();
@@ -67,7 +68,15 @@ const CheckOutFrom = ({ price }) => {
             if(paymentIntent.status === 'succeeded'){
                 console.log('transactionId',paymentIntent.id);
                
-                alert('payment successfully')
+                toast.success('payment successfully')
+                const payment = {
+                    email: user?.email,
+                    price: price,
+                    date: new Date()
+                }
+               const res = await axiosPublic.post('/payments',payment)
+               console.log('payment save',res);
+            
             }
         }
         
@@ -95,7 +104,9 @@ const CheckOutFrom = ({ price }) => {
                 confirm ${price}
             </button>
             <p className="text-red-500 text-sm">{error} </p>
+            <Toaster></Toaster>
         </form>
+        
     );
 };
 

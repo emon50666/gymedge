@@ -30,6 +30,7 @@ import TrainerBooking from "../Components/DashBoard/TrainerBooking/TrainerBookin
 import Payment from "../Components/DashBoard/Payment/Payment";
 import CheckOutFrom from "../Components/DashBoard/Payment/CheckOutFrom";
 import ManageSlot from "../Components/Pages/AllTrainer/ManageSlot";
+import BookedATrainer from "../Components/DashBoard/SideBarMenu/BookedATrainer";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -138,6 +139,10 @@ import ManageSlot from "../Components/Pages/AllTrainer/ManageSlot";
     {
       path: 'manage-slot',
       element: <ManageSlot></ManageSlot>
+    },
+    {
+      path: 'booked-A-Trainer',
+      element: <BookedATrainer></BookedATrainer>
     }
       ]
     },
