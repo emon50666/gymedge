@@ -53,7 +53,7 @@ const AuthProvider = ({children}) => {
         
         status: 'verified'
       }
-      const {data} = axios.put('http://localhost:5000/users',currentUser)
+      const {data} = axios.put('https://exame-12-server.vercel.app/users',currentUser)
       return data
     }
 
