@@ -1,4 +1,4 @@
-[live site link ] (https://unrivaled-pika-86b0eb.netlify.app/)
+[live site link ] (https://tubular-kashata-f91ebc.netlify.app/)
 - website name : gym edge
  - my website type : Fitness Tracker Project
  - responsive all device 
